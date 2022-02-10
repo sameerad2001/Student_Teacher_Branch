@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+### Record details about `teachers`, `branches` and `students`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### What can this application do?
 
-## Available Scripts
+1. Add a new teacher and assign them a subject
+2. Create a new branch and assign it a teacher from a list of ***available***(already existing) teachers 
+3. Add a student who can be enrolled in to the ***previously created*** batches
+4. Display the above information
 
-In the project directory, you can run:
+#### How does this application work?
+- The `App` component contains **local states** to hold the list of entities and various other states that can be used to create new entities. For example :
+```js
+  // List of entities
+  let [students, setStudents] = useState([])
+  
+  ....
 
-### `npm start`
+  // States for adding a new student 
+  let [newStudent, setNewStudent] = useState("")
+  let [studentBranch, setStudentBranch] = useState("")
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- These states are passed to UI components that take user input and modify said state
+```js
+<input
+    type="text"
+    value={props.branchName}
+    onChange={e => { props.setBranchName(e.target.value) }}
+    className="form-control"
+>
+</input>
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- The list of entities is then mapped on to a table
+```js
+function createStudentTable(data) {
+    return <tr>
+        <td>{data.studentName}</td>
+        <td>{data.branchName}</td>
+    </tr>
+}
 
-### `npm test`
+<table>
+    <thead>
+        <tr className="table-dark">
+            <td>Student Names</td>
+            <td>Branch</td>
+        </tr>
+    </thead>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    <tbody>
+        {students.map(createStudentTable)}
+    </tbody>
+</table>
+```
 
-### `npm run build`
+#### Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src = "https://github.com/sameerad2001/Student_Teacher_Branch/blob/master/public/img/Demo2.gif" alt = "Website Demo"/>
+<img src = "https://github.com/sameerad2001/Student_Teacher_Branch/blob/master/public/img/Demo3.jpg" alt = "Website Demo"/>
+<img src = "https://github.com/sameerad2001/Student_Teacher_Branch/blob/master/public/img/Demo4.jpg" alt = "Website Demo"/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<hr>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sameer Ahmed <br/>
+Email : <sameerad2001@gmail.com> <br/>
+Linkdin : <https://www.linkedin.com/in/sameer-ahmed-0b7902176/>
