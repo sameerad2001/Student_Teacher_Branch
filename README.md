@@ -1,13 +1,15 @@
-### Record details about `teachers`, `branches` and `students`
+## Record details about `teachers`, `branches` and `students`
 
-#### What can this application do?
+### What can this application do?
 
 1. Add a new teacher and assign them a subject
 2. Create a new branch and assign it a teacher from a list of ***available***(already existing) teachers 
 3. Add a student who can be enrolled in to the ***previously created*** batches
 4. Display the above information
 
-#### How does this application work?
+---
+
+### How does this application work?
 - The `App` component contains **local states** to hold the list of entities and various other states that can be used to create new entities. For example :
 ```js
   // List of entities
@@ -53,8 +55,9 @@ function createStudentTable(data) {
     </tbody>
 </table>
 ```
+---
 
-#### Demo
+### Demo
 
 <img src = "https://github.com/sameerad2001/Student_Teacher_Branch/blob/master/public/img/Demo2.gif" alt = "Website Demo"/>
 <img src = "https://github.com/sameerad2001/Student_Teacher_Branch/blob/master/public/img/Demo3.jpg" alt = "Website Demo"/>
