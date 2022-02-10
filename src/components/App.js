@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import CreateStudent from "./CreateStudent";
 import CreateTeacher from "./CreateTeacher";
 import CreateBranch from "./CreateBranch";
+import Footer from "./Footer";
 
 function App() {
 
@@ -95,92 +96,95 @@ function App() {
   }
 
   return (
-    <div className="container-fluid">
+    <div>
+      <div className="container-fluid">
 
-      <h1 className="bigHead"> Teacher {'>'} Batch {'>'} Student </h1>
+        <h1 className="bigHead"> Teacher {'>'} Batch {'>'} Student </h1>
 
-      <div>
+        <div>
 
-        <div className="row">
-          <CreateTeacher newTeacher={newTeacher} setNewTeacher={setNewTeacher} subject={subject} setSubject={setSubject}
-            addTeacher={addTeacher}
-          />
+          <div className="row">
+            <CreateTeacher newTeacher={newTeacher} setNewTeacher={setNewTeacher} subject={subject} setSubject={setSubject}
+              addTeacher={addTeacher}
+            />
 
-          <CreateBranch branchName={branchName} setBranchName={setBranchName} teachers={teachers} teacherInCharge={teacherInCharge}
-            setTeacherInCharge={setTeacherInCharge} addBranch={addBranch}
-          />
+            <CreateBranch branchName={branchName} setBranchName={setBranchName} teachers={teachers} teacherInCharge={teacherInCharge}
+              setTeacherInCharge={setTeacherInCharge} addBranch={addBranch}
+            />
 
-          <CreateStudent newStudent={newStudent} setNewStudent={setNewStudent} branches={branches}
-            studentBranch={studentBranch} setStudentBranch={setStudentBranch} addStudent={addStudent} />
+            <CreateStudent newStudent={newStudent} setNewStudent={setNewStudent} branches={branches}
+              studentBranch={studentBranch} setStudentBranch={setStudentBranch} addStudent={addStudent} />
+
+          </div>
+
+          <div className="row">
+
+            {/* Display the teachers */}
+            <div className='col'>
+              <div className='card align-items-center'>
+                <table className="table table-hover">
+                  <thead>
+                    <tr className="table-dark">
+                      <td>Teacher Names</td>
+                      <td>Subject</td>
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+                    {teachers.map(createTeacherTable)}
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+            {/* Display the branch */}
+            <div className='col'>
+              <div className='card align-items-center'>
+                <table className="table table-hover">
+                  <thead>
+                    <tr className="table-dark">
+                      <td>Branch Names</td>
+                      <td>Teacher in-charge</td>
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+                    {branches.map(createBranchTable)}
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+
+            {/* Display the students */}
+            <div className='col'>
+              <div className='card align-items-center'>
+                <table className="table table-hover">
+                  <thead>
+                    <tr className="table-dark">
+                      <td>Student Names</td>
+                      <td>Branch</td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {students.map(createStudentTable)}
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+
+          </div>
 
         </div>
-
-        <div className="row">
-
-          {/* Display the teachers */}
-          <div className='col'>
-            <div className='card align-items-center'>
-              <table className="table table-hover">
-                <thead>
-                  <tr className="table-dark">
-                    <td>Teacher Names</td>
-                    <td>Subject</td>
-                  </tr>
-
-                </thead>
-
-                <tbody>
-                  {teachers.map(createTeacherTable)}
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-
-          {/* Display the branch */}
-          <div className='col'>
-            <div className='card align-items-center'>
-              <table className="table table-hover">
-                <thead>
-                  <tr className="table-dark">
-                    <td>Branch Names</td>
-                    <td>Teacher in-charge</td>
-                  </tr>
-
-                </thead>
-
-                <tbody>
-                  {branches.map(createBranchTable)}
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-
-
-          {/* Display the students */}
-          <div className='col'>
-            <div className='card align-items-center'>
-              <table className="table table-hover">
-                <thead>
-                  <tr className="table-dark">
-                    <td>Student Names</td>
-                    <td>Branch</td>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {students.map(createStudentTable)}
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-
-        </div>
-
       </div>
-    </div>
+      <Footer />
+    </div >
   );
 }
 
